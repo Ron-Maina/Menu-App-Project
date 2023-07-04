@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => renderMenuCategories(data))
 
-     //Fetch Handlers
+    
+    
+    
+    //Fetch Handlers
     //Render best food cards
     function renderBestFoods(data){
         data.slice(0,6).forEach(item => {
@@ -46,10 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
             category.innerText = item
             document.querySelector('#category-cards').appendChild(category)
 
-            category.addEventListener('click', (e) => {
-                console.log(e.target)
-            })
+            category.addEventListener('click', renderSelectedCategory)
         })
     }
-    
+
+    //Render the menu items for the selected category
+    function renderSelectedCategory(e){
+        console.log(e.target.innerText)
+        let content = document.querySelector('#content')
+        content.innerHTML=''
+        content.innerHTML='<button>To Home</button>'
+        //Fetch meals from selected category
+        fetch(`https://free-food-menus-api-production.up.railway.app/${e.target.innerText}`)
+        .then(res => res.json())
+        .then(data => data.slice(0,10).forEach(item => {
+            let meals = document.createElement('div')
+            meals.className = 'meals'
+            meals.innerHTML=`
+            <h3>${item.name}</h3>
+            <p>Description: ${item.dsc}</p>
+            <p>From: ${item.country}</p>
+            <p>Price: ${item.price}</p>
+            <hr>`
+            document.querySelector('#content').appendChild(meals)
+        }))
+        
+    }
 })
