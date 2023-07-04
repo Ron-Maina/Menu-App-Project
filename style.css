@@ -1,0 +1,56 @@
+body{
+    padding-top: 20px;
+}
+main{
+    position: relative;
+    height:850px;
+    padding: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 15px 20px 18px 18px;
+    box-shadow: 5px 10px 5px#333;
+}
+h2{
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+#best-foods{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#category-cards{
+    display: flex;
+    overflow-x: auto;
+}
+#category-cards{
+    padding-top: 20px;
+    justify-content:left;
+}
+.card{
+    position: relative;
+    height: 300px;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 15px 20px 18px 18px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px#333;
+}
+.card p{
+    padding: 20px;
+}
+em{
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+    
+   
+    
+}
