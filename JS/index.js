@@ -36,5 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#best-foods').appendChild(bestFoods)
         });
     }
+
+    //Render Menu Categories
+    function renderMenuCategories(data){
+        let categories = Object.keys(data)
+        categories.forEach(item => {
+            let category = document.createElement('p')
+            category.className = "category"
+            category.innerText = item
+            document.querySelector('#category-cards').appendChild(category)
+
+            category.addEventListener('click', (e) => {
+                console.log(e.target)
+            })
+        })
+    }
     
 })
