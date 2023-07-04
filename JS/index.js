@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => renderMenuCategories(data))
 
-    
+     //Fetch Handlers
+    //Render best food cards
+    function renderBestFoods(data){
+        data.slice(0,6).forEach(item => {
+            let bestFoods = document.createElement('div')
+            bestFoods.className = 'best'
+            bestFoods.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>${item.dsc}</p>
+            <P>Rating: ${item.rate}</p>`
+            document.querySelector('#best-foods').appendChild(bestFoods)
+        });
+    }
     
 })
