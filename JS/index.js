@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let original = document.querySelector('main').innerHTML
+   
 
     //Form event listener
     document.querySelector('form').addEventListener('submit', handleSubmit)
 
     //Submit handler 
     function handleSubmit(e){
+        console.log(e)
         e.preventDefault()
         let searchItem = e.target.name.value
         console.log(searchItem)
@@ -14,15 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch Requests
     //Fetch best foods
-    fetch('https://free-food-menus-api-production.up.railway.app/best-foods')
-    .then(res => res.json())
-    .then(bestFoodsData => renderBestFoods(bestFoodsData))
+    const fetchBestFoods = function (){
+        fetch('https://free-food-menus-api-production.up.railway.app/best-foods')
+        .then(res => res.json())
+        .then(bestFoodsData => renderBestFoods(bestFoodsData))
+    }
+    fetchBestFoods()
 
     //Fetch Menu Categories
-    fetch('https://free-food-menus-api-production.up.railway.app/pagination')
-    .then(res => res.json())
-    .then(menuCategoriesData => renderMenuCategories(menuCategoriesData))
+    function fetchMenuCategories(){
+        fetch('https://free-food-menus-api-production.up.railway.app/pagination')
+        .then(res => res.json())
+        .then(menuCategoriesData => renderMenuCategories(menuCategoriesData))
 
+    }
+    fetchMenuCategories()
     
     
     
@@ -39,9 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#best-foods').appendChild(bestFoods)
         });
     }
-
+    
     //Render Menu Categories
     function renderMenuCategories(data){
+        
         let categories = Object.keys(data)
         categories.forEach(item => {
             let category = document.createElement('p')
@@ -63,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let content = document.querySelector('#content')
         content.innerHTML=''
         content.innerHTML='<button>To Home</button>'
-        //Fetch meals from selected category
+        //Fetch meals of selected category
         fetch(`https://free-food-menus-api-production.up.railway.app/${selection}`)
         .then(res => res.json())
         .then(data => data.slice(0,10).forEach(item => {
@@ -76,12 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Price: $${item.price}</p>
             <hr>`
             document.querySelector('#content').appendChild(meals)
+           
         }))
-        document.querySelector('button').addEventListener('click', () => {
-            document.querySelector('#content').innerHTML=''
-            renderBestFoods(bestFoodsdata)
-            renderMenuCategories(menuCategoriesdata)
-        })
+        BackToHome()
+
+        //Render home page after selecting back button
+        function BackToHome(){
+            document.querySelector('button').addEventListener('click', () => {
+                document.querySelector('header').remove()
+                document.querySelector('#content').remove()
+                let DefaultPage = document.querySelector('main')
+                DefaultPage.className = "default"
+                DefaultPage.innerHTML = `${original}`
+                fetchBestFoods()
+                fetchMenuCategories()
+                
+            })
+        }
+        
         
     }
 
