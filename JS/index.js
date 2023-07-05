@@ -82,34 +82,57 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>From: ${item.country}</p>
             <p>Price: $${item.price}</p>
             <div class="rating">
-            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
-            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
-            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
-            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
-            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            <i class="inactive fa fa-star-o" style="font-size:24px"></i>
+            <i class="inactive fa fa-star-o" style="font-size:24px"></i>
+            <i class="inactive fa fa-star-o" style="font-size:24px"></i>
+            <i class="inactive fa fa-star-o" style="font-size:24px"></i>
+            <i class="inactive fa fa-star-o" style="font-size:24px"></i>
             </div>
             <hr>`
             document.querySelector('#content').appendChild(meals)
-            
-           
-        }))
-        BackToHome()
 
-        //Render home page after selecting back button
-        function BackToHome(){
-            document.querySelector('button').addEventListener('click', () => {
-                document.querySelector('header').remove()
-                document.querySelector('#content').remove()
-                let DefaultPage = document.querySelector('main')
-                DefaultPage.className = "default"
-                DefaultPage.innerHTML = `${original}`
-                fetchBestFoods()
-                fetchMenuCategories() 
-                searchBar()   
-            })
-        }
-        
-        
+            let stars = meals.querySelectorAll('.inactive');
+            let ratingStars = Array.from(stars);
+            console.log(ratingStars)
+            addRating(ratingStars)
+        }))
+        BackToHome()  
+    }
+
+    //Function to handle rating of meals
+    function addRating(stars){
+        const inactiveStar = "inactive fa fa-star-o" 
+        const activeStar = "active fa fa-star-o"
+        const length = stars.length
+        let i
+        stars.map(star => star.addEventListener('click', () => {
+            i = stars.indexOf(star)
+            if (star.className===inactiveStar){
+                for(i; i>=0; --i){
+                    stars[i].className = activeStar;
+                } 
+            }else{
+                for(i; i < length; ++i){
+                    stars[i].className = inactiveStar
+                }
+            }
+        }))
+    }
+
+
+
+    //Render home page after selecting back button
+    function BackToHome(){
+        document.querySelector('button').addEventListener('click', () => {
+            document.querySelector('header').remove()
+            document.querySelector('#content').remove()
+            let DefaultPage = document.querySelector('main')
+            DefaultPage.className = "default"
+            DefaultPage.innerHTML = `${original}`
+            fetchBestFoods()
+            fetchMenuCategories() 
+            searchBar()   
+        })
     }
 
     
