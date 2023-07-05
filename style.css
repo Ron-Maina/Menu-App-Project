@@ -13,18 +13,6 @@ main{
     box-shadow: 5px 10px 5px#333;
     overflow-y: auto;
 }
-/* .default{
-    position: relative;
-    height:850px;
-    padding: 20px;
-    margin-left: 20%;
-    margin-right: 20%;
-    border: 1px solid #333;
-    background: rgba(255, 255, 255, 0.75);
-    padding: 15px 20px 18px 18px;
-    box-shadow: 5px 10px 5px#333;
-    overflow-y: auto;
-} */
 
 h2{
     text-align: center;

@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
     //Form event listener
-    document.querySelector('form').addEventListener('submit', handleSubmit)
-
-    //Submit handler 
-    function handleSubmit(e){
-        console.log(e)
-        e.preventDefault()
-        let searchItem = e.target.name.value
-        console.log(searchItem)
-        e.target.reset()
-        renderSelectedCategory(searchItem)
+    function searchBar(){
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault()
+            let searchItem = e.target.name.value
+            console.log(searchItem)
+            e.target.reset()
+            renderSelectedCategory(searchItem)
+        })
     }
+    searchBar()
+
 
     //Fetch Requests
     //Fetch best foods
@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Render Menu Categories
     function renderMenuCategories(data){
-        
         let categories = Object.keys(data)
         categories.forEach(item => {
             let category = document.createElement('p')
@@ -62,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category.addEventListener('click', () => {
                 let selection = category.innerText
                 renderSelectedCategory(selection)
-            })
-            
-            
+            })   
         })
     }
 
@@ -84,8 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <p>Description: ${item.dsc}</p>
             <p>From: ${item.country}</p>
             <p>Price: $${item.price}</p>
+            <div class="rating">
+            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            <i class="ratingStar fa fa-star-o" style="font-size:24px"></i>
+            </div>
             <hr>`
             document.querySelector('#content').appendChild(meals)
+            
            
         }))
         BackToHome()
@@ -99,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 DefaultPage.className = "default"
                 DefaultPage.innerHTML = `${original}`
                 fetchBestFoods()
-                fetchMenuCategories()
-                
+                fetchMenuCategories() 
+                searchBar()   
             })
         }
         
