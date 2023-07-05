@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
         let searchItem = e.target.name.value
         console.log(searchItem)
         e.target.reset()
-        renderCategoryItems(searchItem)
+        renderSelectedCategory(searchItem)
     }
 
     //Fetch Requests
     //Fetch best foods
     fetch('https://free-food-menus-api-production.up.railway.app/best-foods')
     .then(res => res.json())
-    .then(data => renderBestFoods(data))
+    .then(bestFoodsData => renderBestFoods(bestFoodsData))
 
     //Fetch Menu Categories
     fetch('https://free-food-menus-api-production.up.railway.app/pagination')
     .then(res => res.json())
-    .then(data => renderMenuCategories(data))
+    .then(menuCategoriesData => renderMenuCategories(menuCategoriesData))
 
     
     
@@ -48,19 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
             category.className = "category"
             category.innerText = item
             document.querySelector('#category-cards').appendChild(category)
-
-            category.addEventListener('click', renderSelectedCategory)
+            
+            category.addEventListener('click', () => {
+                let selection = category.innerText
+                renderSelectedCategory(selection)
+            })
+            
+            
         })
     }
 
     //Render the menu items for the selected category
-    function renderSelectedCategory(e){
-        console.log(e.target.innerText)
+    function renderSelectedCategory(selection){
         let content = document.querySelector('#content')
         content.innerHTML=''
         content.innerHTML='<button>To Home</button>'
         //Fetch meals from selected category
-        fetch(`https://free-food-menus-api-production.up.railway.app/${e.target.innerText}`)
+        fetch(`https://free-food-menus-api-production.up.railway.app/${selection}`)
         .then(res => res.json())
         .then(data => data.slice(0,10).forEach(item => {
             let meals = document.createElement('div')
@@ -69,10 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>${item.name}</h3>
             <p>Description: ${item.dsc}</p>
             <p>From: ${item.country}</p>
-            <p>Price: ${item.price}</p>
+            <p>Price: $${item.price}</p>
             <hr>`
             document.querySelector('#content').appendChild(meals)
         }))
+        document.querySelector('button').addEventListener('click', () => {
+            document.querySelector('#content').innerHTML=''
+            renderBestFoods(bestFoodsdata)
+            renderMenuCategories(menuCategoriesdata)
+        })
         
     }
+
+    
 })
