@@ -1,5 +1,5 @@
 # Menu App
- Menu Built With HTML, CSS, and JS, JUL 17 2023
+ Menu App Built With HTML, CSS, and JS, JUL 17 2023
 
 By Ron Maina
 
@@ -12,6 +12,8 @@ This is a Menu Web Application built using HTML, vanilla CSS and JavaScript wher
 - Access to the internet
 ## View Live Site
 Ensure that your device of choice has a browser installed. Click the link provided below to view the site.
+
+ https://ron-maina.github.io/Menu-App-Project/
 
 ## Using the App
 The user can navigate the web app and should be able to: 
