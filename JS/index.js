@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     fetchMenuCategories()
     
-    
-    
     //Fetch Handlers
     //Render best food cards
     function renderBestFoods(data){
