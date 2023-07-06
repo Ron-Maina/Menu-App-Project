@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             category.innerHTML =`<h3>${item}</h3>
             <p class="text">Experience a wide menu selection of our ${item} category, 
             Indulge in our tantalizing ${item} Symphony, where culinary craftsmanship meets your cravings. 
-            Feast your eyes on a mouthwatering medley of sizzling delicacies, from classic favorites with a gourmet twist to daring creations that push the boundaries of flavor</p>`
+            Feast your eyes on a mouthwatering medley of sizzling delicacies, 
+            from classic favorites with a gourmet twist to daring creations 
+            that push the boundaries of flavor</p>`
             document.querySelector('#category-cards').appendChild(category)
             
             category.addEventListener('click', () => {
