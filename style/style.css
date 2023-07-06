@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cookie&family=Raleway&family=Satisfy&display=swap');
 body{
     padding-top: 10px;
+    background-image: url(./chefs\ 1.jpg);
 }
 main{
     position: relative;
@@ -12,6 +14,8 @@ main{
     padding: 15px 20px 18px 18px;
     box-shadow: 5px 10px 5px#333;
     overflow-y: auto;
+    opacity: 1;
+   
 }
 
 h2{
@@ -21,6 +25,7 @@ h2{
 }
 #slogan{
     text-align: center;
+    font-size: 20px;
 }
 
 form{
@@ -29,7 +34,11 @@ form{
 h3{
     margin-bottom: 0%;
 }
-
+span{
+    color: #7b3804;
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+}
 #best-foods{
     padding-bottom: 10px;
     display: grid;
@@ -41,7 +50,6 @@ h3{
     display: flex;
     gap: 100px;
     width: 100%;
-    /* padding-top: 20px; */
     overflow-x:auto;
 }
 .category{
@@ -54,10 +62,15 @@ h3{
     padding: 15px 20px 18px 18px;
     box-shadow: 2px 2px 2px#333;
     border-radius: 10px;
-    
+    background-color: #5f4b3b;
+    color: white;   
 }
 button{
     margin-bottom: 10px;
+}
+hr{
+    height: 2px;
+    background-color: black;
 }
 #image{
     width: 250px;        

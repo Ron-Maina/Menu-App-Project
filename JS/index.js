@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div id="image">
                 <img src = "${item.img}" alt="${item.name}">
             </div>
-            <h3>${item.name}</h3>
+            <h3><span>${item.name}<span></h3>
             <p>Description: ${item.dsc}</p>
             <p>From: ${item.country}</p>
             <p>Price: $${item.price}</p>
