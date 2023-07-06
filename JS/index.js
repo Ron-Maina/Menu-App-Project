@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let category = document.createElement('div')
             category.className = "category"
             category.innerHTML =`<h3>${item}</h3>
-            <p>Click to view our Menu Items</p>`
+            <p class="text">Experience a wide menu selection of our ${item} category, 
+            Indulge in our tantalizing ${item} Symphony, where culinary craftsmanship meets your cravings. 
+            Feast your eyes on a mouthwatering medley of sizzling delicacies, from classic favorites with a gourmet twist to daring creations that push the boundaries of flavor</p>`
             document.querySelector('#category-cards').appendChild(category)
             
             category.addEventListener('click', () => {
@@ -78,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
             let meals = document.createElement('div')
             meals.className = 'meals'
             meals.innerHTML=`
+            <div id="image">
+                <img src = "${item.img}" alt="${item.name}">
+            </div>
             <h3>${item.name}</h3>
             <p>Description: ${item.dsc}</p>
             <p>From: ${item.country}</p>

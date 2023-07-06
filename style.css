@@ -1,9 +1,9 @@
 body{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 main{
     position: relative;
-    height:850px;
+    height:870px;
     padding: 20px;
     margin-left: 20%;
     margin-right: 20%;
@@ -29,6 +29,7 @@ form{
 h3{
     margin-bottom: 0%;
 }
+
 #best-foods{
     padding-bottom: 10px;
     display: grid;
@@ -38,23 +39,36 @@ h3{
 }
 #category-cards{
     display: flex;
-    gap: 30px;
+    gap: 100px;
     width: 100%;
     /* padding-top: 20px; */
     overflow-x:auto;
 }
 .category{
-    width: 100px;
-    height: 200px;
+    width: auto;
+    height: 300px;
     border: 1px solid #333;
     position: relative;
     left: 0%;
-    /* margin-right: 3%; */
-    
     background: rgba(255, 255, 255, 0.75);
     padding: 15px 20px 18px 18px;
     box-shadow: 2px 2px 2px#333;
+    border-radius: 10px;
     
+}
+button{
+    margin-bottom: 10px;
+}
+#image{
+    width: 250px;        
+    
+}
+#image img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.text{
+    width: 200px;
 }
 #categoryList{
     position: relative;
