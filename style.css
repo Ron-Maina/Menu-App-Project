@@ -33,7 +33,32 @@ h3{
     padding-bottom: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    
    
+}
+#category-cards{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    /* padding-top: 20px; */
+    overflow-x:auto;
+}
+.category{
+    width: 100px;
+    height: 200px;
+    border: 1px solid #333;
+    position: relative;
+    left: 0%;
+    /* margin-right: 3%; */
+    
+    background: rgba(255, 255, 255, 0.75);
+    padding: 15px 20px 18px 18px;
+    box-shadow: 2px 2px 2px#333;
+    
+}
+#categoryList{
+    position: relative;
+    top: -10px;
 }
 .active{
     color: #FF9529;

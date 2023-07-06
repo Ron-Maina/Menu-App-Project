@@ -53,13 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderMenuCategories(data){
         let categories = Object.keys(data)
         categories.forEach(item => {
-            let category = document.createElement('p')
+            let category = document.createElement('div')
             category.className = "category"
-            category.innerText = item
+            category.innerHTML =`<h3>${item}</h3>
+            <p>Click to view our Menu Items</p>`
             document.querySelector('#category-cards').appendChild(category)
             
             category.addEventListener('click', () => {
-                let selection = category.innerText
+                let selection = category.querySelector('h3').innerText
                 renderSelectedCategory(selection)
             })   
         })
